@@ -1,0 +1,39 @@
+
+increaseVisitors();
+updateVisitors();
+setInterval(updateVisitors,5000);
+
+function create_table() {
+    fetch("http://127.0.0.1:5000/create/table/for/first/time/1998753951").then(function(response) {
+        data = response.json()
+        console.log(data)
+    })
+}
+
+function add_count() {
+    fetch("http://127.0.0.1:5000/write/table/for/first/time/1198753951",{
+        method:"POST",
+        body:JSON.stringify(body),
+        headers : {
+            'Content-Type':'application/json'
+        }
+    }).then(function(response) {
+        data = response.json();
+        console.log(data);
+    })
+}
+
+
+function increaseVisitors() {
+    fetch("http://127.0.0.1:5000/visitors/increase/1")
+}
+
+function updateVisitors() {
+    fetch("http://127.0.0.1:5000/visitors/get/1").then(function(response) {
+        data = response.json().then(data => {
+            console.log(data)
+            document.getElementById('visitors').innerHTML = `Toplam Ziyaretçi Sayısı :<div>${data['count']}</div>`;
+        })    
+    })
+}
+
