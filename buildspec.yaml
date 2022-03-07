@@ -1,0 +1,13 @@
+version : 0.2
+
+phases:
+  pre_build:
+    commands:
+  build:
+    command:
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+  base-directory: build
